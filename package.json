@@ -1,6 +1,6 @@
 {
   "name": "grunt-spapp-generator",
-  "description": "spapp generator.",
+  "description": "spapp generator with suport for multitasks",
   "version": "0.2.0",
   "homepage": "https://github.com/lduboeuf/grunt-spapp-generator",
   "author": {

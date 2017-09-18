@@ -2,27 +2,29 @@
 **spapp generator, inline templates in html file, also create skeleton for a new ctrl+tpl
 **/
 module.exports = function(grunt) {
-  var path = require("path");
-  grunt.registerTask('spapp_generator', 'SPapp generator', function(arg1, arg2) {
+  var conf = grunt.config('spapp_generator');
+  var path = require('path');
 
 
-    var conf = grunt.config('spapp_generator');
-
+  grunt.registerMultiTask('spapp_generator', 'SPapp generator', function(arg1, arg2) {
+    console.log('args', arg1, arg2);
+    var conf = this.data;
     if (!conf.src || !conf.dest) {
       grunt.log.error('files src and dest not found in' + this.name +' options');
       return;
     }
 
-    if (!arg1){
-      grunt.log.error('please provide target( ' + this.name + ':inline_template or ' + this.name + ':new)');
-      return;
-    }
+    // if (!arg1){
+    //   grunt.log.error('please provide target( ' + this.name + ':inline_template or ' + this.name + ':new)');
+    //   return;
+    // }
 
-    if (arg1=='inline'){
+    if (arg1=='inline' || !arg1 ){
       return importTemplates(conf);
     }else if (arg1=='new'){
       return newTemplate(conf);
     }
+
 
   });
 
@@ -128,6 +130,7 @@ module.exports = function(grunt) {
   function insert(str, index, value) {
     return str.substr(0, index) + value + str.substr(index);
   }
+
 
 
 }
